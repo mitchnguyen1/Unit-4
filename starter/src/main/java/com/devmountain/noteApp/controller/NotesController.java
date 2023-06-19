@@ -6,6 +6,7 @@ import com.devmountain.noteApp.services.NotesService;
 import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PostUpdate;
@@ -21,6 +22,7 @@ public class NotesController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     @PostMapping("/addNote/{userId}")
     public void addNote(@RequestBody NotesDto notesDto, @PathVariable Long userId){
@@ -39,7 +41,7 @@ public class NotesController {
     };
 
     @GetMapping("/notesByUser/{id}")
-    public List<NotesDto> findAllNotesByUser(@PathVariable Long id){
+    public List<NotesDto> findAllNotesByUser(@PathVariable Long id, Model theModel){
         return notesService.findAllNotesByUser(id);
     };
 

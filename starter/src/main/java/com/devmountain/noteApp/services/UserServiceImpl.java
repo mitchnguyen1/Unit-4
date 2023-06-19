@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
         List<String> response = new ArrayList<>();
         User user = new User(userDto);
         userRepository.saveAndFlush(user);
-        response.add("User Added Successfully");
+        response.add("http://localhost:8080/login.html");
         return response;
 
     }
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             if (passwordEncoder.matches(userDto.getPassword(), user.getPassword())) {
-                response.add("Success!");
+                response.add("http://localhost:8080/home.html");
                 response.add(String.valueOf(user.getId()));
             } else {
                 response.add("Incorrect username or password");
