@@ -57,7 +57,7 @@ const getNoteById = async (noteId) => {
     method: "GET",
     headers: headers,
   })
-    .then((response) => response.json)
+    .then((response) => response.json())
     .then((data) => populateModal(data))
     .catch((err) => console.log(err.message));
 };
@@ -96,7 +96,7 @@ const createNoteCards = (array) => {
           <p class="card-text">${note.body}</p>
           <div class="d-flex justify-content-between">
             <button class="btn btn-danger" onclick="handleDelete(${note.id})" type="button">Delete</button>
-            <button class="btn btn-primary" onclick="getNoteById(${note.id})" type="button" data-bs-toggle="modal" data-bs-target="#note-edit-modal">Edit</button>
+            <button class="btn btn-primary" onclick="getNoteById(${note.id})" type="button" data-bs-toggle="modal" data-bs-target="#note-edit-modal-title">Edit</button>
           </div>
         </div>
       </div> 
@@ -110,7 +110,6 @@ const populateModal = obj => {
     noteBody.innerText = ""
     noteBody.innerText = obj.body
     updateNoteBtn.setAttribute('data-note-id', obj.id)
-
 }
 
 getNotes(userId)
